@@ -32,9 +32,7 @@ jobs:
 
       # 2. Prepare dependencies
       - name: Install Dependencies
-        run: |
-          flutter clean 
-          flutter pub get
+        run: flutter pub get
 
       # 3. Build the APKs
       # This generates 3 files in build/app/outputs/flutter-apk/
@@ -47,7 +45,7 @@ jobs:
         with:
           name: Bengali Dictionary ${{ github.ref_name }}
           draft: false
-          prerelease: false
+          prerelease: true
           generate_release_notes: true
           files: |
             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
