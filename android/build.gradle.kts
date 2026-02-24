@@ -26,13 +26,16 @@ tasks.register<Delete>("clean") {
 
 subprojects {
     val project = this
-    // This executes before the project is evaluated
     project.plugins.whenObjectAdded {
         if (this is com.android.build.gradle.BasePlugin) {
             project.extensions.configure<com.android.build.gradle.BaseExtension> {
+                // Force the namespace (Our previous fix)
                 if (namespace == null) {
                     namespace = project.group.toString()
                 }
+                
+                // FORCE THE SDK VERSION (Fixes lStar error)
+                compileSdkVersion(36)
             }
         }
     }

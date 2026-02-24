@@ -32,12 +32,14 @@ jobs:
 
       # 2. Prepare dependencies
       - name: Install Dependencies
-        run: flutter pub get
+        run: |
+          flutter clean 
+          flutter pub get
 
       # 3. Build the APKs
       # This generates 3 files in build/app/outputs/flutter-apk/
       - name: Build Split APKs
-        run: flutter build apk --release --split-per-abi
+        run: flutter build apk --release --split-per-abi --no-tree-shake-icons
 
       # 4. Create the Release and upload all APKs
       - name: Create GitHub Release
