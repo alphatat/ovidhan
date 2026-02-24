@@ -1,5 +1,6 @@
 import java.io.File
 import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.CommonExtension
 
 allprojects {
     repositories {
@@ -24,8 +25,16 @@ subprojects {
 }
 
 subprojects {
+    plugins.withId("com.android.application") {
+        extensions.configure<CommonExtension<*, *, *, *, *, *>>("android") {
+            compileSdk = maxOf(compileSdk, 34)
+        }
+    }
+
     plugins.withId("com.android.library") {
         extensions.configure<LibraryExtension>("android") {
+            compileSdk = maxOf(compileSdk, 34)
+
             if (namespace == null) {
                 val manifestFile = project.file("src/main/AndroidManifest.xml")
                 val manifestPackage =
