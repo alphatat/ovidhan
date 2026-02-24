@@ -6,8 +6,8 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ovidhan"
-    compileSdk = flutter.compileSdkVersion
+    namespace = "com.alphatat.ovidhan"
+    compileSdk = 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -24,8 +24,8 @@ android {
         applicationId = "com.alphatat.ovidhan"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 21
+        targetSdk = 34
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
