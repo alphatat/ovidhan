@@ -34,8 +34,6 @@ subprojects {
                     namespace = project.group.toString()
                 }
                 
-                // FORCE THE SDK VERSION (Fixes lStar error)
-                compileSdkVersion(36)
             }
         }
     }
