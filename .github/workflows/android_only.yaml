@@ -37,7 +37,7 @@ jobs:
       # 3. Build the APKs
       # This generates 3 files in build/app/outputs/flutter-apk/
       - name: Build Split APKs
-        run: flutter build apk --release --split-per-abi --no-tree-shake-icons
+        run: flutter build apk --release --split-per-abi --no-tree-shake-icons --enable-experiment=dot-shorthands --android-skip-build-dependency-validation
 
       # 4. Create the Release and upload all APKs
       - name: Create GitHub Release
