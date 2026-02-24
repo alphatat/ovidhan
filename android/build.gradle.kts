@@ -19,11 +19,17 @@ subprojects {
     project.evaluationDependsOn(":app")
 }
 
+
+tasks.register<Delete>("clean") {
+    delete(rootProject.layout.buildDirectory)
+}
+
 subprojects {
-    afterEvaluate {
-        val project = this
-        if (project.extensions.findByName("android") != null) {
-            configure<com.android.build.gradle.BaseExtension> {
+    val project = this
+    // This executes before the project is evaluated
+    project.plugins.whenObjectAdded {
+        if (this is com.android.build.gradle.BasePlugin) {
+            project.extensions.configure<com.android.build.gradle.BaseExtension> {
                 if (namespace == null) {
                     namespace = project.group.toString()
                 }
@@ -31,9 +37,3 @@ subprojects {
         }
     }
 }
-
-
-tasks.register<Delete>("clean") {
-    delete(rootProject.layout.buildDirectory)
-}
-
