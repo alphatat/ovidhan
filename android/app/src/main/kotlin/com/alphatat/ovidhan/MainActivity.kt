@@ -1,4 +1,4 @@
-package com.example.ovidhan
+package com.alphatat.ovidhan
 
 import io.flutter.embedding.android.FlutterActivity
 
