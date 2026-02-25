@@ -43,7 +43,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Bengali Dictionary ${{ github.ref_name }}
+          name: Ovidhan ${{ github.ref_name }}
           draft: false
           prerelease: true
           generate_release_notes: true
