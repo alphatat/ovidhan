@@ -1,0 +1,63 @@
+name: Multi-PlatformOLD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # --- 1. BUILD FOR ANDROID ---
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+      - run: flutter build apk --release --split-per-abi
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  # --- 2. BUILD FOR WINDOWS ---
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - run: flutter pub get
+      - run: flutter build windows --release
+      - name: Upload Windows Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-exe
+          path: build/windows/x64/runner/Release/
+
+  # --- 3. CREATE GITHUB RELEASE ---
+  create-release:
+    needs: [build-android, build-windows] # Wait for builds to finish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Important: Gives GitHub permission to create the release
+    steps:
+      - name: Download Android Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: android-apk
+
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+            build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+            build/app/outputs/flutter-apk/app-x86_64-release.apk
+            Ovidhan_Windows.zip
+          name: Release ${{ github.ref_name }}
+          # ... rest of your config
