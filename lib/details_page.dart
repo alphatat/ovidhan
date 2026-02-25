@@ -28,7 +28,7 @@ class DetailsPage extends StatelessWidget {
 
             if (retData.pronun != null)
               Text(
-                "/$retData.pronun}/",
+                "/${retData.pronun}/",
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey.shade900,
@@ -40,6 +40,7 @@ class DetailsPage extends StatelessWidget {
 
             if (retData.pos != null)
               Container(
+                alignment: Alignment.centerRight,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 6,
@@ -56,20 +57,28 @@ class DetailsPage extends StatelessWidget {
                   ),
                 ),
               ),
+
             const Divider(height: 40),
+
             Text(
               "${retData.meaning}",
               style: TextStyle(fontSize: 20, color: Colors.blueGrey.shade900),
             ),
-            const Divider(height: 20),
-            Text(
-              retData.examples != null ? "${retData.examples}" : "",
-              style: TextStyle(fontSize: 18, color: Colors.blueGrey.shade700),
-            ),
+
             Text(
               retData.engmean ?? '',
               style: TextStyle(fontSize: 18, color: Colors.blueGrey.shade700),
             ),
+
+            const Divider(height: 20),
+
+            Text(
+              retData.examples != null ? "${retData.examples}" : "",
+              style: TextStyle(fontSize: 18, color: Colors.blueGrey.shade700),
+            ),
+
+            const SizedBox(height: 10),
+
             Text(
               "${retData.origlan ?? '/[ /]'} | ${retData.origetym ?? ''}",
 
