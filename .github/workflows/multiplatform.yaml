@@ -1,9 +1,9 @@
 name: Multi-Platform Build & Release
 
 on:
-  push:
-    tags:
-      - 'v*' # Triggers on tags like v1.0.0, v1.1.0 etc.
+  # push:
+  #   tags:
+  #     - 'v*' # Triggers on tags like v1.0.0, v1.1.0 etc.
   workflow_dispatch:
 
 jobs:
