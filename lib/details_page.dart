@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'models/shobdo.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 class DetailsPage extends StatelessWidget {
   final Shobdo retData;
 
@@ -103,7 +105,17 @@ class DetailsPage extends StatelessWidget {
                 ElevatedButton.icon(
                   icon: Icon(Icons.coffee),
                   label: Text('SupportKori'),
-                  onPressed: () => {},
+                  onPressed: () async {
+                    final uri = Uri.parse(
+                      'https://www.supportkori.com/alphatat',
+                    );
+                    if (await canLaunchUrl(uri)) {
+                      await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      );
+                    }
+                  },
                 ),
               ],
             ),
