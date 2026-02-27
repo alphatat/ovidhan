@@ -46,7 +46,7 @@ jobs:
           name: Ovidhan ${{ github.ref_name }}
           draft: false
           prerelease: true
-          tag: 'v0.0.23'
+          tag_name: 'v0.0.24'
           generate_release_notes: true
           files: |
             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
