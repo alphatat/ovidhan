@@ -73,7 +73,7 @@ class DetailsPage extends StatelessWidget {
             const Divider(height: 20),
 
             Text(
-              retData.examples != null ? "${retData.examples}" : "",
+              retData.examples ?? '',
               style: TextStyle(fontSize: 18, color: Colors.blueGrey.shade700),
             ),
 
