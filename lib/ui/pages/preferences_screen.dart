@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ovidhan/theme/theme_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PreferencesScreen extends StatelessWidget {
   const PreferencesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final themeProvider = Provider.of<ThemeProvider>(context);
     final colors = [
       Colors.cyanAccent,
@@ -20,11 +20,14 @@ class PreferencesScreen extends StatelessWidget {
       Colors.purpleAccent,
       Colors.deepPurpleAccent,
       Colors.blueGrey,
+      Colors.tealAccent,
+      Colors.amberAccent,
+      Colors.lightBlueAccent,
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(r'<#মাল মশলা#>'),
+        title: const Text(r'<#মাল-মশলা#>'),
         backgroundColor: colorScheme.primaryContainer,
         foregroundColor: colorScheme.onPrimaryContainer,
       ),
@@ -41,7 +44,7 @@ class PreferencesScreen extends StatelessWidget {
 
           const Divider(),
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16),
             child: Text(
               'প্রিয় রং',
               style: TextStyle(
@@ -84,6 +87,56 @@ class PreferencesScreen extends StatelessWidget {
                 );
               }).toList(),
             ),
+          ),
+
+          const Divider(),
+
+          SwitchListTile(
+            value: themeProvider.jumpTo,
+            onChanged: themeProvider.toggleScrollMode,
+            title: const Text('লাফ দিয়ে যায়?'),
+            subtitle: const Text('Jump to scroll position?'),
+            activeThumbColor: colorScheme.primary,
+            secondary: Icon(
+              Icons.keyboard_double_arrow_down,
+              color: colorScheme.primary,
+            ),
+          ),
+          const Divider(),
+          const SizedBox(height: 200),
+          const Text(
+            'Do you find Ovidhan helpful?\n Want to help us to work more?\n Motivate us with your support and enthusiasm',
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 20),
+          Center(
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber.shade500,
+              ),
+              icon: const Icon(
+                Icons.coffee_sharp,
+                color: Color.fromARGB(255, 65, 53, 14),
+                size: 30,
+              ),
+              label: const Text(
+                'SupportKori',
+                style: TextStyle(color: Colors.black, fontSize: 20),
+              ),
+              onPressed: () async {
+                final uri = Uri.parse('https://www.supportkori.com/alphatat');
+                if (await canLaunchUrl(uri)) {
+                  await launchUrl(uri, mode: LaunchMode.externalApplication);
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          const Divider(),
+          const Text(
+            'With Love from Alphatat and M4dsur\n © MadLeaf Studios',
+            textAlign: TextAlign.center,
           ),
         ],
       ),

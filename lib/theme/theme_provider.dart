@@ -4,9 +4,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ThemeProvider extends ChangeNotifier {
   bool _isDark = false;
   Color _accentColor = Colors.cyanAccent;
+  bool _jumpTo = true;
 
   bool get isDark => _isDark;
   Color get accentColor => _accentColor;
+  bool get jumpTo => _jumpTo;
 
   ThemeProvider() {
     _loadPreferences();
@@ -32,6 +34,13 @@ class ThemeProvider extends ChangeNotifier {
     _accentColor = color;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('accentColor', color.toARGB32());
+    notifyListeners();
+  }
+
+  Future<void> toggleScrollMode(bool value) async {
+    _jumpTo = value;
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('jumpTo', value);
     notifyListeners();
   }
 }

@@ -58,8 +58,8 @@ class _SearchCapsuleState extends State<SearchCapsule>
         boxShadow: _isExpanded
             ? [
                 BoxShadow(
-                  color: theme.colorScheme.primary.withAlpha(60),
-                  blurRadius: 8,
+                  color: theme.colorScheme.primary.withAlpha(90),
+                  blurRadius: 10,
                 ),
               ]
             : null,
@@ -68,8 +68,9 @@ class _SearchCapsuleState extends State<SearchCapsule>
         children: [
           Expanded(
             child: AnimatedContainer(
-              duration: const Duration(microseconds: 200),
-              margin: EdgeInsets.only(left: _isExpanded ? 12 : 16),
+              duration: const Duration(microseconds: 500),
+              curve: Curves.easeInOut,
+              margin: EdgeInsets.only(left: _isExpanded ? 12 : 18),
               child: TextField(
                 controller: _textControler,
                 focusNode: _focusNode,

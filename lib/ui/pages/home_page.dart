@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ovidhan/ui/pages/details_page.dart';
 import 'package:ovidhan/ui/widgets/search_capsule.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:provider/provider.dart';
+import 'package:ovidhan/theme/theme_provider.dart';
 import '../../models/shobdo.dart';
 import '../../main.dart';
 
@@ -14,7 +16,6 @@ class OvidhanHomePage extends StatefulWidget {
 
 class _OvidhanHomePageState extends State<OvidhanHomePage> {
   final ItemScrollController _scrollControl = ItemScrollController();
-
   List<Shobdo> _allShobdo = [];
 
   @override
@@ -30,7 +31,7 @@ class _OvidhanHomePageState extends State<OvidhanHomePage> {
     });
   }
 
-  void _onQueryChange(String query) {
+  void _onQueryChangeJ(String query) {
     if (query.isEmpty) return;
     int index = _allShobdo.indexWhere((item) => item.word.startsWith(query));
 
@@ -39,9 +40,26 @@ class _OvidhanHomePageState extends State<OvidhanHomePage> {
     }
   }
 
+  void _onQueryChangeS(String query) {
+    if (query.isEmpty) return;
+
+    int index = _allShobdo.indexWhere((item) => item.word.startsWith(query));
+
+    if (index != -1) {
+      _scrollControl.scrollTo(
+        index: index,
+        duration: Duration(seconds: 2),
+        curve: Curves.decelerate,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final jumpTo = themeProvider.jumpTo;
+
     return Scaffold(
       // appBar: AppBar(
       //   title: TextField(
@@ -58,12 +76,15 @@ class _OvidhanHomePageState extends State<OvidhanHomePage> {
       //   ),
       // ),
       appBar: AppBar(
-        backgroundColor: colorScheme.onPrimary,
-        title: const Text('অভিধান'),
+        backgroundColor: colorScheme.primaryContainer,
+        title: const Text(
+          'অভিধান',
+          style: TextStyle(fontWeight: FontWeight.w900),
+        ),
         actions: [
           IconButton(
             onPressed: () => Navigator.pushNamed(context, '/settings'),
-            icon: const Icon(Icons.settings),
+            icon: const Icon(Icons.menu),
           ),
         ],
       ),
@@ -71,7 +92,7 @@ class _OvidhanHomePageState extends State<OvidhanHomePage> {
       body: Column(
         children: [
           SearchCapsule(
-            onSearch: _onQueryChange,
+            onSearch: jumpTo ? _onQueryChangeJ : _onQueryChangeS,
             onSettingsTap: () => Navigator.pushNamed(context, '/settings'),
           ),
           Expanded(
