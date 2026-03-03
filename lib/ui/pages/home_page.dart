@@ -41,8 +41,7 @@ class _OvidhanHomePageState extends State<OvidhanHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       // appBar: AppBar(
       //   title: TextField(

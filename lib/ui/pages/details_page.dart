@@ -10,8 +10,7 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colorScheme.onPrimary,
@@ -39,7 +38,10 @@ class DetailsPage extends StatelessWidget {
                 if (retData.pronun != null)
                   Text(
                     "/${retData.pronun}/",
-                    style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
 
                 if (retData.pos != null)
@@ -66,15 +68,17 @@ class DetailsPage extends StatelessWidget {
 
             const Divider(height: 40),
 
-            Text("${retData.meaning}", style: TextStyle(fontSize: 20)),
+            Text("${retData.meaning}", style: const TextStyle(fontSize: 20)),
+
             const Divider(height: 20),
-            Text(retData.engmean ?? '', style: TextStyle(fontSize: 18)),
+
+            Text(retData.engmean ?? '', style: const TextStyle(fontSize: 18)),
 
             const Divider(height: 20),
 
             Text(
               ('▶  ') + (retData.examples ?? ''),
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
 
             const Divider(height: 20),
@@ -82,16 +86,17 @@ class DetailsPage extends StatelessWidget {
             Text(
               "||${retData.origlan ?? '/[ /]'} | ${retData.origetym ?? ''} ||",
 
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
+
             const SizedBox(height: 250),
+
             Container(
               // credits and support container
               alignment: Alignment.bottomCenter,
-              child: Text(
+              child: const Text(
                 'অভিধান ভালো লাগলে সাহায্য করুন \n নিচের লিঙ্কের মাধ্যমে',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: colorScheme.primaryFixedDim),
               ),
             ),
             Row(
@@ -102,12 +107,12 @@ class DetailsPage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber.shade500,
                   ),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.coffee_sharp,
-                    color: const Color.fromARGB(255, 65, 53, 14),
+                    color: Color.fromARGB(255, 65, 53, 14),
                     size: 30,
                   ),
-                  label: Text(
+                  label: const Text(
                     'SupportKori',
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),

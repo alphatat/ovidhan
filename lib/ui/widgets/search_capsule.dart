@@ -22,7 +22,7 @@ class _SearchCapsuleState extends State<SearchCapsule>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     );
 
@@ -58,7 +58,7 @@ class _SearchCapsuleState extends State<SearchCapsule>
         boxShadow: _isExpanded
             ? [
                 BoxShadow(
-                  color: theme.colorScheme.primary.withAlpha(20),
+                  color: theme.colorScheme.primary.withAlpha(60),
                   blurRadius: 8,
                 ),
               ]
@@ -96,7 +96,7 @@ class _SearchCapsuleState extends State<SearchCapsule>
               if (_isExpanded)
                 IconButton(
                   onPressed: () {
-                    widget.onSearch('');
+                    widget.onSearch('অ');
                     _textControler.clear();
                     _focusNode.requestFocus();
                   },
