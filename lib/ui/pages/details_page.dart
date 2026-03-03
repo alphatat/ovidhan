@@ -1,7 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'models/shobdo.dart';
+import '../../models/shobdo.dart'; //my class for the words object structure
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,12 +7,17 @@ class DetailsPage extends StatelessWidget {
   final Shobdo retData;
 
   const DetailsPage({super.key, required this.retData});
+
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return Scaffold(
       appBar: AppBar(
-        title: Text(retData.word),
-        backgroundColor: Colors.blueGrey.shade50,
+        backgroundColor: colorScheme.onPrimary,
+        title: Text(
+          retData.word,
+        ), //TO:DO: entend the details page with next and previous page buttons// and to add more functions like word lookup history
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
@@ -23,10 +26,10 @@ class DetailsPage extends StatelessWidget {
           children: [
             Text(
               retData.word,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
-                color: Colors.blueGrey,
+                color: colorScheme.primary,
               ),
             ),
 
@@ -36,11 +39,7 @@ class DetailsPage extends StatelessWidget {
                 if (retData.pronun != null)
                   Text(
                     "/${retData.pronun}/",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey.shade900,
-                      fontStyle: FontStyle.italic,
-                    ),
+                    style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
                   ),
 
                 if (retData.pos != null)
@@ -51,14 +50,14 @@ class DetailsPage extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.blueGrey.shade100,
+                      color: colorScheme.primary.withAlpha(50),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
                       retData.pos!,
                       style: TextStyle(
-                        color: Colors.blueGrey,
                         fontWeight: FontWeight.bold,
+                        color: colorScheme.primary,
                       ),
                     ),
                   ),
@@ -67,44 +66,51 @@ class DetailsPage extends StatelessWidget {
 
             const Divider(height: 40),
 
-            Text(
-              "${retData.meaning}",
-              style: TextStyle(fontSize: 20, color: Colors.blueGrey.shade900),
-            ),
+            Text("${retData.meaning}", style: TextStyle(fontSize: 20)),
+            const Divider(height: 20),
+            Text(retData.engmean ?? '', style: TextStyle(fontSize: 18)),
+
+            const Divider(height: 20),
 
             Text(
-              retData.engmean ?? '',
-              style: TextStyle(fontSize: 18, color: Colors.blueGrey.shade700),
+              ('▶  ') + (retData.examples ?? ''),
+              style: TextStyle(fontSize: 18),
             ),
 
             const Divider(height: 20),
 
             Text(
-              ('▶') + (retData.examples ?? ''),
-              style: TextStyle(fontSize: 18, color: Colors.blueGrey.shade700),
-            ),
+              "||${retData.origlan ?? '/[ /]'} | ${retData.origetym ?? ''} ||",
 
-            const Divider(height: 10),
-
-            Text(
-              "${retData.origlan ?? '/[ /]'} | ${retData.origetym ?? ''}",
-
-              style: TextStyle(fontSize: 16, color: Colors.blueGrey.shade600),
+              style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 250),
             Container(
+              // credits and support container
               alignment: Alignment.bottomCenter,
               child: Text(
-                'My by Alphatat\n Movitave me to work more by',
+                'অভিধান ভালো লাগলে সাহায্য করুন \n নিচের লিঙ্কের মাধ্যমে',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.blueGrey.shade600),
+                style: TextStyle(color: colorScheme.primaryFixedDim),
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+
               children: [
                 ElevatedButton.icon(
-                  icon: Icon(Icons.coffee),
-                  label: Text('SupportKori'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade500,
+                  ),
+                  icon: Icon(
+                    Icons.coffee_sharp,
+                    color: const Color.fromARGB(255, 65, 53, 14),
+                    size: 30,
+                  ),
+                  label: Text(
+                    'SupportKori',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
                   onPressed: () async {
                     final uri = Uri.parse(
                       'https://www.supportkori.com/alphatat',

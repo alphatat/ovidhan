@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ovidhan/theme/app_theme.dart';
+import 'package:ovidhan/theme/theme_provider.dart';
+import 'package:provider/provider.dart';
 import 'services/dict_service.dart';
-import 'models/shobdo.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'home_page.dart';
+import 'ui/pages/home_page.dart';
+import 'package:ovidhan/ui/pages/preferences_screen.dart';
 
 //declaration of global variables
 final dictService = DictService();
@@ -12,7 +14,12 @@ void main() async {
 
   await dictService.init();
 
-  runApp(const Ovidhan());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const Ovidhan(),
+    ),
+  );
 }
 
 class Ovidhan extends StatelessWidget {
@@ -21,14 +28,19 @@ class Ovidhan extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ovidhan',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const OvidhanHomePage(),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: 'Ovidhan',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.getTheme(
+            themeProvider.accentColor,
+            themeProvider.isDark,
+          ),
+          home: const OvidhanHomePage(),
+          routes: {'/settings': (context) => const PreferencesScreen()},
+        );
+      },
     );
   }
 }
