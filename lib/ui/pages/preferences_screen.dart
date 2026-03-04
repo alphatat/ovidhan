@@ -103,6 +103,16 @@ class PreferencesScreen extends StatelessWidget {
             ),
           ),
           const Divider(),
+
+          SwitchListTile(
+            value: themeProvider.isDivider,
+            onChanged: themeProvider.toggleShowDivider,
+            title: const Text('লিস্টের মাঝে ডিভাইডার?'),
+            subtitle: const Text('Show divider in homepage?'),
+            activeThumbColor: colorScheme.primary,
+            secondary: Icon(Icons.view_list_sharp, color: colorScheme.primary),
+          ),
+          const Divider(),
           const SizedBox(height: 200),
           const Text(
             'Do you find Ovidhan helpful?\n Want to help us to work more?\n Motivate us with your support and enthusiasm',

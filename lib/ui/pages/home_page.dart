@@ -59,6 +59,7 @@ class _OvidhanHomePageState extends State<OvidhanHomePage> {
     final colorScheme = Theme.of(context).colorScheme;
     final themeProvider = Provider.of<ThemeProvider>(context);
     final jumpTo = themeProvider.jumpTo;
+    final showDivider = themeProvider.isDivider;
 
     return Scaffold(
       // appBar: AppBar(
@@ -103,17 +104,22 @@ class _OvidhanHomePageState extends State<OvidhanHomePage> {
                     itemCount: _allShobdo.length,
                     itemScrollController: _scrollControl,
                     itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(_allShobdo[index].word),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  DetailsPage(retData: _allShobdo[index]),
-                            ),
-                          ); // Handle tap on the word, e.g., navigate to a detail page
-                        },
+                      return Column(
+                        children: [
+                          ListTile(
+                            title: Text(_allShobdo[index].word),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailsPage(retData: _allShobdo[index]),
+                                ),
+                              ); // Handle tap on the word, e.g., navigate to a detail page
+                            },
+                          ),
+                          if (showDivider) const Divider(),
+                        ],
                       );
                     },
                   ),
