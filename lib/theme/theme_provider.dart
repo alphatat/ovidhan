@@ -5,10 +5,12 @@ class ThemeProvider extends ChangeNotifier {
   bool _isDark = false;
   Color _accentColor = Colors.cyanAccent;
   bool _jumpTo = true;
+  bool _isDivider = false;
 
   bool get isDark => _isDark;
   Color get accentColor => _accentColor;
   bool get jumpTo => _jumpTo;
+  bool get isDivider => _isDivider;
 
   ThemeProvider() {
     _loadPreferences();
@@ -17,6 +19,8 @@ class ThemeProvider extends ChangeNotifier {
   Future<void> _loadPreferences() async {
     final prefs = await SharedPreferences.getInstance();
     _isDark = prefs.getBool('isDark') ?? false;
+    _jumpTo = prefs.getBool('jumpTo') ?? false;
+    _isDivider = prefs.getBool('isDivider') ?? false;
     final savedColor = prefs.getInt('accentColor');
     _accentColor = Color(savedColor ?? Colors.cyanAccent.toARGB32());
 
@@ -41,6 +45,13 @@ class ThemeProvider extends ChangeNotifier {
     _jumpTo = value;
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('jumpTo', value);
+    notifyListeners();
+  }
+
+  Future<void> toggleShowDivider(bool value) async {
+    _isDivider = value;
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isDivider', value);
     notifyListeners();
   }
 }
