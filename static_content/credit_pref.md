@@ -1,12 +1,19 @@
-# Credits
+# Credits & Community
 
-Would not be able to do this without the help of the [Project-Shobdo](https://github.com/InanXR/Shobdo) by [Inan-XR](https://github.com/InanXR)
+## 🙏 Acknowledgements
 
-he somehow managed to Run a Good ocr on Adhunik Bangla Ovidhan by the Bangla Academy.
-and made the resource publicly available. But the data sure is outdated and has its flaws, I will try to update the data, that is my next task..
+This app would not have been possible without the incredible work of [Inan-XR](https://github.com/InanXR) and his [Project-Shobdo](https://github.com/InanXR/Shobdo).
 
----
+He managed to run a high quality OCR on the **Adhunik Bangla Ovidhan** by the Bangla Academy and made the resource publicly available. The data has its flaws and is somewhat outdated — improving and updating it is our next priority.
 
-This app is community response driven. Join out telegram channel to get the latest updates and to reccoment the features that you think would be useful in the app.
+## 💬 Community
 
-[![Telegram Link](telegram.png)](https://t.me/ovidhan)
+This app is **community driven**. Your feedback, suggestions, and enthusiasm are what keep this project alive and growing.
+
+Join our Telegram channel to get the latest updates, report issues, and recommend features you would love to see in the app.
+
+[![Telegram](https://img.shields.io/badge/Telegram-Join%20Us-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ovidhan)
+--------
+*With ❤️ from **Alphatat** and **M4dsur**
+© MadLeaf Studios*
+
