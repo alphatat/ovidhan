@@ -43,10 +43,9 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Minor Bug Fixes#${{ github.ref_name }}
+          name: Ovidhan ${{ github.ref_name }}
           draft: false
-          prerelease: false
-          tag_name: v0.1.1
+          prerelease: true
           generate_release_notes: true
           files: |
             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
