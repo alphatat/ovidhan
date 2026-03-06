@@ -10,10 +10,11 @@ He managed to run a high quality OCR on the **Adhunik Bangla Ovidhan** by the Ba
 
 This app is **community driven**. Your feedback, suggestions, and enthusiasm are what keep this project alive and growing.
 
-Join our Telegram channel to get the latest updates, report issues, and recommend features you would love to see in the app.
+Join our Telegram channel to get the latest updates, report issues, and recommend features you would love to see in the app. /
 
-[![Telegram](https://img.shields.io/badge/Telegram-Join%20Us-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/ovidhan)
+[⌯⌲ Telegram Channel](https://t.me/ov1dhan)
 --------
-*With ❤️ from **Alphatat** and **M4dsur**
+*With ❤️ from **Alphatat** and **M4dsur**. /
+
 © MadLeaf Studios*
 
