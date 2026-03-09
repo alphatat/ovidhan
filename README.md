@@ -42,7 +42,7 @@
 
 | Home & Search | Theme Settings | Dark Mode |
 |:-------------:|:-------------:|:---------:|
-| ![Home](screenshots/home.png) | ![Themes](screenshots/themes.png) | ![Dark](screenshots/dark.png) |
+| ![Home](/home.gif) | ![Themes](/colors.gif) | ![Dark](/dark.gif) |
 | *Search Interface* | *Theme Customization* | *Dark Mode* |
 
 </div>
