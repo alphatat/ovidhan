@@ -15,6 +15,20 @@
 
 ---
 
+## 📸 Screenshots / স্ক্রিনশট
+
+<div align="center">
+
+| Home & Search | Theme Settings | Dark Mode |
+|:-------------:|:-------------:|:---------:|
+| ![Home](/home.gif) | ![Themes](/colors.gif) | ![Dark](/dark.gif) |
+| *Search Interface* | *Theme Customization* | *Dark Mode* |
+
+</div>
+
+
+---
+
 ## 📖 About / পরিচিতি
 
 **Ovidhan** is a modern, offline-first Bangla dictionary application built with Flutter. It provides instant word definitions, synonyms, and examples without requiring an internet connection. Perfect for students, writers, and anyone who loves the Bengali language.
@@ -33,22 +47,6 @@
 | 📱 **Multi-Platform** | Android, (iOS, Windows, Linux coming soon)| অ্যান্ড্রয়েড, iOS, উইন্ডোজ, লিনাক্স |
 | 🔖 **Favorites** | Save words for quick access | পছন্দের শব্দ সংরক্ষণ |
 | 🌐 **Bengali Fonts** | Beautiful Noto Sans Bengali rendering | সুন্দর নোটো সান্স বাংলা ফন্ট |
-
----
-
-## 📸 Screenshots / স্ক্রিনশট
-
-<div align="center">
-
-| Home & Search | Theme Settings | Dark Mode |
-|:-------------:|:-------------:|:---------:|
-| ![Home](/home.gif) | ![Themes](/colors.gif) | ![Dark](/dark.gif) |
-| *Search Interface* | *Theme Customization* | *Dark Mode* |
-
-</div>
-
-
----
 
 ## 🚀 Installation / ইনস্টলেশন
 
@@ -83,8 +81,8 @@ flutter run
 |------|---------|------|
 | Flutter | 3.x+ | [flutter.dev](https://flutter.dev) |
 | Dart | 3.x+ | [dart.dev](https://dart.dev) |
-| Android Studio | Latest | [android.com/studio](https://android.com/studio) |
 | VS Code (Optional) | Latest | [code.visualstudio.com](https://code.visualstudio.com) |
+| Android Studio | Latest | [android.com/studio](https://android.com/studio) |
 
 ### Build Commands / বিল্ড কমান্ড
 
@@ -188,7 +186,6 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 - [Flutter Team and Dart Team](https://flutter.dev) - For the amazing framework
 - [Isar Database](https://isar.dev) - For offline-first database solution
-
 - [All Contributors](../../graphs/contributors) - For making this project possible
 
 ---
